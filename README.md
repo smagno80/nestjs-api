@@ -90,5 +90,11 @@ $ git push -u origin main
 $ git remote add origin https://github.com/smagno80/nestjs-api.git
 $ git branch -M main
 $ git push -u origin main
+```
 
+## Migrations
+
+```bash
+$ npm run migration:generate -- db/migrations/initial
+$ npm run migration:run
 ```
