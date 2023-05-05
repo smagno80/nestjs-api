@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { hash } from 'bcrypt';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -15,8 +16,13 @@ export class UsersService {
   ) {}
 
   async signup(body: UserSignUpDto): Promise<UserEntity> {
-    const user = this.usersRepository.create(body);
-    return await this.usersRepository.save(user);
+    const userExists = await this.findUserByEmail(body.email);
+    if (userExists) throw new BadRequestException('Email is not available.');
+    body.password = await hash(body.password, 10);
+    let user = this.usersRepository.create(body);
+    user = await this.usersRepository.save(user);
+    delete user.password;
+    return user;
   }
 
   create(createUserDto: CreateUserDto) {
@@ -37,5 +43,9 @@ export class UsersService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  async findUserByEmail(email: string) {
+    return await this.usersRepository.findOneBy({ email });
   }
 }
