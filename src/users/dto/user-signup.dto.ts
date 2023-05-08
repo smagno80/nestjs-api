@@ -5,4 +5,8 @@ export class UserSignUpDto extends UserSignInDto {
   @IsNotEmpty({ message: 'Name can not be null.' })
   @IsString({ message: 'Name should be string.' })
   name: string;
+
+  @IsNotEmpty({ message: 'Username can not be null.' })
+  @IsString({ message: 'Username should be string.' })
+  username: string;
 }

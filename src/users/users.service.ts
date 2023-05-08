@@ -72,4 +72,36 @@ export class UsersService {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRE_TIME,
     });
   }
+
+  //   async findOneFilter(filter: { where: { id?: string; username?: string; email?: string } }): Promise<UserEntity> {
+  //     return await this.usersRepository.findOne({ ...filter });
+  //   }
+
+  //   async createFilter(createUserDto: CreateUserDto): Promise<UserEntity | { warningMessage: string }> {
+  //     const user = new UserEntity();
+
+  //     const existingByUsername = await this.findOneFilter({ where: { username: createUserDto.username } });
+
+  //     const existingByEmail = await this.findOneFilter({ where: { email: createUserDto.email } });
+
+  //     if (existingByUsername) {
+  //       return { warningMessage: 'Username is not available.' };
+  //     }
+
+  //     if (existingByEmail) {
+  //       return { warningMessage: 'Email is not available.' };
+  //     }
+
+  //     const hashedPassword = await hash(createUserDto.password, 10);
+
+  //     user.name = createUserDto.name;
+  //     user.username = createUserDto.username;
+  //     user.email = createUserDto.email;
+  //     user.password = hashedPassword;
+
+  //     let data = this.usersRepository.create(user);
+  //     data = await this.usersRepository.save(data);
+  //     delete data.password;
+  //     return data;
+  //   }
 }
