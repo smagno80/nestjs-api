@@ -1,4 +1,6 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+
+import { Roles } from '../../utility/common/user-roles.enum';
 import { UserSignInDto } from './user-signin.dto';
 
 export class UserSignUpDto extends UserSignInDto {
@@ -9,4 +11,9 @@ export class UserSignUpDto extends UserSignInDto {
   @IsNotEmpty({ message: 'Username can not be null.' })
   @IsString({ message: 'Username should be string.' })
   username: string;
+
+  @IsNotEmpty({ message: 'Roles can not be null.' })
+  @IsArray({ message: 'Roles should be array.' })
+  @IsEnum(Roles, { each: true })
+  roles: Roles[];
 }

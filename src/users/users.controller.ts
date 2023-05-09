@@ -1,7 +1,10 @@
-import { Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common';
 
+import { AuthorizeRoles } from 'src/utility/decorators/authorize-roles.decorator';
+import { Roles } from '../utility/common/user-roles.enum';
 import { CurrentUser } from '../utility/decorators/current-user.decorator';
-import { CreateUserDto } from './dto/create-user.dto';
+import { AuthenticationGuard } from '../utility/guards/authentication.guard';
+import { AuthorizeGuard } from '../utility/guards/authorization.guard';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserSignInDto } from './dto/user-signin.dto';
 import { UserSignUpDto } from './dto/user-signup.dto';
@@ -35,6 +38,8 @@ export class UsersController {
   //     return this.usersService.createFilter(createUserDto);
   //   }
 
+  @AuthorizeRoles(Roles.ADMIN)
+  @UseGuards(AuthenticationGuard, AuthorizeGuard)
   @Get('all')
   async findAll(): Promise<UserEntity[]> {
     return await this.usersService.findAll();
@@ -55,6 +60,7 @@ export class UsersController {
     return this.usersService.remove(+id);
   }
 
+  @UseGuards(AuthenticationGuard)
   @Get('me')
   getProfile(@CurrentUser() currentUser: UserEntity) {
     return currentUser;

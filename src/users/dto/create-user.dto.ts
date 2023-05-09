@@ -1,5 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 
+import { Roles } from '../../utility/common/user-roles.enum';
+
 export class CreateUserDto {
   @IsNotEmpty()
   readonly name: string;
@@ -12,4 +14,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   readonly email: string;
+
+  @IsNotEmpty()
+  readonly roles: Roles[];
 }
