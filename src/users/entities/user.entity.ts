@@ -18,7 +18,8 @@ export class UserEntity {
   @Column({ select: false })
   password: string;
 
-  @Column({ type: 'simple-array', default: Roles.USER })
+  //   @Column({ type: 'simple-array', default: Roles.USER })
+  @Column({ type: 'varchar', default: Roles.USER })
   roles: Roles[];
 
   @CreateDateColumn()

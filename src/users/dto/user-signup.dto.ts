@@ -12,7 +12,6 @@ export class UserSignUpDto extends UserSignInDto {
   @IsString({ message: 'Username should be string.' })
   username: string;
 
-  @IsNotEmpty({ message: 'Roles can not be null.' })
   @IsArray({ message: 'Roles should be array.' })
   @IsEnum(Roles, { each: true })
   roles: Roles[];
