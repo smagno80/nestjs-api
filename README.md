@@ -97,4 +97,7 @@ $ git push -u origin main
 ```bash
 $ npm run migration:generate -- db/migrations/initial
 $ npm run migration:run
+
+$ npm run migration:generate -- db/migrations/addTBL_category
+$ npm run migration:run
 ```
