@@ -100,4 +100,7 @@ $ npm run migration:run
 
 $ npm run migration:generate -- db/migrations/addTBL_category
 $ npm run migration:run
+
+$ npm run migration:generate -- db/migrations/addTBL_products
+$ npm run migration:run
 ```
