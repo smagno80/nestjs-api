@@ -9,7 +9,10 @@ import { CategoryEntity } from './entities/category.entity';
 
 @Injectable()
 export class CategoriesService {
-  constructor(@InjectRepository(CategoryEntity) private readonly categoryRepository: Repository<CategoryEntity>) {}
+  constructor(
+    @InjectRepository(CategoryEntity)
+    private readonly categoryRepository: Repository<CategoryEntity>,
+  ) {}
 
   async create(createCategoryDto: CreateCategoryDto, currentUser: UserEntity): Promise<CategoryEntity> {
     const category = this.categoryRepository.create(createCategoryDto);

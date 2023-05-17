@@ -21,7 +21,7 @@ export const AuthorizeGuard = (allowedRoles: string[]) => {
   class RolesGuardMixin implements CanActivate {
     canActivate(context: ExecutionContext): boolean {
       const request = context.switchToHttp().getRequest();
-      console.log('Request.roles ...', request?.currentUser?.roles.split(','));
+      // console.log('Request.roles ...', request?.currentUser?.roles.split(','));
 
       const result = request?.currentUser?.roles
         .split(',')
