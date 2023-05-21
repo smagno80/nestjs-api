@@ -2,6 +2,7 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Ti
 
 import { CategoryEntity } from '../../categories/entities/category.entity';
 import { ProductEntity } from '../../products/entities/product.entity';
+import { ReviewEntity } from '../../reviews/entities/review.entity';
 import { Roles } from '../../utility/common/user-roles.enum';
 @Entity('users')
 export class UserEntity {
@@ -35,4 +36,7 @@ export class UserEntity {
 
   @OneToMany(() => ProductEntity, (prod) => prod.addedBy)
   products: ProductEntity[];
+
+  @OneToMany(() => ReviewEntity, (rev) => rev.user)
+  reviews: ReviewEntity[];
 }
