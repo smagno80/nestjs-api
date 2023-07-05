@@ -31,12 +31,12 @@ export class UserEntity {
   @UpdateDateColumn()
   updatedAt: Timestamp;
 
-  @OneToMany(() => CategoryEntity, (cat) => cat.addedBy)
-  categories: CategoryEntity[];
+  //   @OneToMany(() => CategoryEntity, (cat) => cat.addedBy)
+  //   categories: CategoryEntity[];
 
-  @OneToMany(() => ProductEntity, (prod) => prod.addedBy)
-  products: ProductEntity[];
+  //   @OneToMany(() => ProductEntity, (prod) => prod.addedBy)
+  //   products: ProductEntity[];
 
-  @OneToMany(() => ReviewEntity, (rev) => rev.user)
-  reviews: ReviewEntity[];
+  //   @OneToMany(() => ReviewEntity, (rev) => rev.user)
+  //   reviews: ReviewEntity[];
 }

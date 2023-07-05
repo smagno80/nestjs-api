@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common';
 
-import { AuthorizeRoles } from 'src/utility/decorators/authorize-roles.decorator';
+import { AuthorizeRoles } from '../utility/decorators/authorize-roles.decorator';
 import { Roles } from '../utility/common/user-roles.enum';
 import { CurrentUser } from '../utility/decorators/current-user.decorator';
 import { AuthenticationGuard } from '../utility/guards/authentication.guard';

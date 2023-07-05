@@ -20,9 +20,9 @@ export class ReviewEntity {
   @UpdateDateColumn()
   updatedAt: Timestamp;
 
-  @ManyToOne(() => UserEntity, (user) => user.reviews)
+  @ManyToOne(() => UserEntity, (user) => user.id)
   user: UserEntity;
 
-  @ManyToOne(() => ProductEntity, (prod) => prod.reviews)
+  @ManyToOne(() => ProductEntity, (prod) => prod.id)
   product: ProductEntity;
 }

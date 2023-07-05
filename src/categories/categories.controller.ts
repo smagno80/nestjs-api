@@ -14,7 +14,7 @@ import { CategoryEntity } from './entities/category.entity';
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
-  @UseGuards(AuthenticationGuard, AuthorizeGuard([Roles.SUPER, Roles.ADMIN]))
+  //   @UseGuards(AuthenticationGuard, AuthorizeGuard([Roles.SUPER, Roles.ADMIN]))
   @Post()
   async create(@Body() createCategoryDto: CreateCategoryDto, @CurrentUser() currentUser: UserEntity): Promise<CategoryEntity> {
     return await this.categoriesService.create(createCategoryDto, currentUser);

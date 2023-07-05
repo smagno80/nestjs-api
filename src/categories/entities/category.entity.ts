@@ -20,9 +20,9 @@ export class CategoryEntity {
   @UpdateDateColumn()
   updatedAt: Timestamp;
 
-  @ManyToOne(() => UserEntity, (user) => user.categories)
+  @ManyToOne(() => UserEntity, (user) => user.id)
   addedBy: UserEntity;
 
-  @OneToMany(() => ProductEntity, (prod) => prod.category)
-  products: ProductEntity[];
+  //   @OneToMany(() => ProductEntity, (prod) => prod.category)
+  //   products: ProductEntity[];
 }

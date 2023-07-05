@@ -30,12 +30,12 @@ export class ProductEntity {
   @UpdateDateColumn()
   updatedAt: Timestamp;
 
-  @ManyToOne(() => UserEntity, (user) => user.products)
+  @ManyToOne(() => UserEntity, (user) => user.id)
   addedBy: UserEntity;
 
-  @ManyToOne(() => CategoryEntity, (cat) => cat.products)
+  @ManyToOne(() => CategoryEntity, (cat) => cat.id)
   category: CategoryEntity;
 
-  @OneToMany(() => ReviewEntity, (rev) => rev.product)
-  reviews: ReviewEntity[];
+  //   @OneToMany(() => ReviewEntity, (rev) => rev.product)
+  //   reviews: ReviewEntity[];
 }
