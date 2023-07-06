@@ -38,4 +38,7 @@ export class ProductEntity {
 
   //   @OneToMany(() => ReviewEntity, (rev) => rev.product)
   //   reviews: ReviewEntity[];
+
+  //   @OneToMany(() => OrderProductEntity, (op) => op.)
+  //   products: OrderProductEntity[];
 }

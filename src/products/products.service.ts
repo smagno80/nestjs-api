@@ -1,3 +1,4 @@
+import { CurrentUser } from './../utility/decorators/current-user.decorator';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -7,6 +8,7 @@ import { UserEntity } from '../users/entities/user.entity';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductEntity } from './entities/product.entity';
+import { OrderStatus } from 'src/orders/enums/order-status.enum';
 
 @Injectable()
 export class ProductsService {
@@ -68,5 +70,16 @@ export class ProductsService {
 
   async remove(id: number) {
     return `This action removes a #${id} product`;
+  }
+
+  async updateStock(id: number, stock: number, status: string) {
+    let product = await this.findOne(id);
+    if (status === OrderStatus.DELIVERED) {
+      product.stock -= stock;
+    } else {
+      product.stock += stock;
+    }
+    product = await this.productRepository.save(product);
+    return product;
   }
 }
