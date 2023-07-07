@@ -13,9 +13,9 @@ export class OrdersProductsEntity {
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   product_quantity: number;
 
-  @ManyToOne(() => OrderEntity, (order) => order.id)
+  @ManyToOne(() => OrderEntity, (order) => order.products)
   order: OrderEntity;
 
-  @ManyToOne(() => ProductEntity, (product) => product.id, { cascade: true })
+  @ManyToOne(() => ProductEntity, (prod) => prod.products, { cascade: true })
   product: ProductEntity;
 }

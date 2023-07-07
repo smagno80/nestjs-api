@@ -3,6 +3,7 @@ import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGenerate
 import { CategoryEntity } from '../../categories/entities/category.entity';
 import { ReviewEntity } from '../../reviews/entities/review.entity';
 import { UserEntity } from '../../users/entities/user.entity';
+import { OrdersProductsEntity } from 'src/orders/entities/orders-products.entity';
 
 @Entity({ name: 'products' })
 export class ProductEntity {
@@ -33,12 +34,12 @@ export class ProductEntity {
   @ManyToOne(() => UserEntity, (user) => user.id)
   addedBy: UserEntity;
 
-  @ManyToOne(() => CategoryEntity, (cat) => cat.id)
+  @ManyToOne(() => CategoryEntity, (cat) => cat.products)
   category: CategoryEntity;
 
-  //   @OneToMany(() => ReviewEntity, (rev) => rev.product)
-  //   reviews: ReviewEntity[];
+  @OneToMany(() => ReviewEntity, (rev) => rev.product)
+  reviews: ReviewEntity[];
 
-  //   @OneToMany(() => OrderProductEntity, (op) => op.)
-  //   products: OrderProductEntity[];
+  @OneToMany(() => OrdersProductsEntity, (op) => op.product)
+  products: ProductEntity[];
 }

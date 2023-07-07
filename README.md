@@ -107,3 +107,9 @@ $ npm run migration:run
 $ npm run migration:generate -- db/migrations/addTBL_reviews
 $ npm run migration:run
 ```
+
+## Proyect original
+
+- Title - Nestjs rest api. Ecommerce project.
+- Github - https://github.com/bilchalan/nestjs-bazar-api
+- Youtube - https://www.youtube.com/watch?v=9TOiLEgx6Pk&list=PLxL5WsbN2Sm6uY31egfjfO540B0KOqrP4&pp=iAQB
